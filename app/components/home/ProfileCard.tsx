@@ -71,7 +71,7 @@ export default function ProfileCard({ profile, onOpenModal }: ProfileCardProps) 
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onClick={handleClick}
-      className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-[#131122] p-0 text-left transition-opacity duration-150 active:opacity-75 hover:border-fuchsia-500/50 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/50 touch-manipulation block select-none"
+      className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl border border-[var(--card-border)] bg-[var(--bg-card-subtle)] p-0 text-left transition-all duration-150 active:opacity-75 hover:border-fuchsia-500/50 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/50 touch-manipulation block select-none shadow-sm"
     >
       {/* Profile Photo */}
       <Image

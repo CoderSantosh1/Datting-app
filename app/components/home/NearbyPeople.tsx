@@ -702,7 +702,7 @@ export default function NearbyPeople() {
                 onClick={(e) => e.stopPropagation()}
                 onTouchStart={(e) => e.stopPropagation()}
                 onTouchEnd={(e) => e.stopPropagation()}
-                className="relative z-10 flex w-full max-w-md max-h-[88dvh] sm:max-h-[90vh] flex-col overflow-hidden rounded-t-3xl sm:rounded-3xl border border-white/20 bg-[#141224] shadow-2xl overscroll-contain"
+                className="relative z-10 flex w-full max-w-md max-h-[88dvh] sm:max-h-[90vh] flex-col overflow-hidden rounded-t-3xl sm:rounded-3xl border border-[var(--border-strong)] bg-[var(--modal-bg)] text-[var(--text-primary)] shadow-2xl overscroll-contain transition-colors"
               >
                 {/* Close Button Top Right */}
                 <button
@@ -731,7 +731,7 @@ export default function NearbyPeople() {
                     sizes="(max-width: 640px) 100vw, 450px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#141224] via-[#141224]/20 to-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
 
                   <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
                     <div>
@@ -748,8 +748,8 @@ export default function NearbyPeople() {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-white/80 mt-0.5">
-                        <span className="rounded bg-fuchsia-500/30 px-1.5 py-0.2 font-semibold text-fuchsia-300">
+                      <div className="flex items-center gap-2 text-xs text-white/90 mt-0.5">
+                        <span className="rounded bg-fuchsia-500/40 px-1.5 py-0.2 font-semibold text-fuchsia-200">
                           {selectedProfile.pronouns}
                         </span>
                         <span>•</span>
@@ -773,7 +773,7 @@ export default function NearbyPeople() {
                 <div className="flex flex-col gap-3 p-4 overflow-y-auto max-h-[55vh]">
                   {/* Vibe & Voice Note */}
                   <div className="flex flex-wrap items-center justify-between gap-1.5">
-                    <span className="rounded-lg border border-fuchsia-500/30 bg-fuchsia-500/15 px-2.5 py-0.5 text-xs font-bold text-fuchsia-300">
+                    <span className="rounded-lg border border-fuchsia-500/30 bg-fuchsia-500/15 px-2.5 py-0.5 text-xs font-bold text-fuchsia-500">
                       {selectedProfile.vibe}
                     </span>
 
@@ -781,11 +781,11 @@ export default function NearbyPeople() {
                       <button
                         type="button"
                         onClick={() => setIsPlayingVoice(!isPlayingVoice)}
-                        className="flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-300 transition hover:bg-cyan-500/20 active:scale-95"
+                        className="flex items-center gap-1.5 rounded-lg border border-cyan-400/40 bg-cyan-500/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-500 transition hover:bg-cyan-500/20 active:scale-95"
                       >
                         <Volume2
                           size={13}
-                          className={isPlayingVoice ? "animate-pulse text-cyan-200" : ""}
+                          className={isPlayingVoice ? "animate-pulse text-cyan-400" : ""}
                         />
                         <span>
                           {isPlayingVoice
@@ -798,34 +798,34 @@ export default function NearbyPeople() {
 
                   {/* About Me / Bio */}
                   <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-white/40">
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
                       About Me
                     </h4>
-                    <p className="mt-1 text-xs leading-relaxed text-white/85">
+                    <p className="mt-1 text-xs leading-relaxed text-[var(--text-primary)]">
                       {selectedProfile.bio}
                     </p>
                   </div>
 
                   {/* What I'm Looking For */}
                   <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-white/40">
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
                       Looking For
                     </h4>
-                    <p className="mt-1 text-xs text-white/70">
+                    <p className="mt-1 text-xs text-[var(--text-secondary)]">
                       Dates, new queer friends, coffee chats & live voice hangouts.
                     </p>
                   </div>
 
                   {/* Tags */}
                   <div>
-                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-white/40">
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
                       Interests & Identity
                     </h4>
                     <div className="mt-1.5 flex flex-wrap gap-1">
                       {selectedProfile.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[11px] text-white/70"
+                          className="rounded-md border border-[var(--border-subtle)] bg-[var(--badge-bg)] px-2 py-0.5 text-[11px] text-[var(--text-secondary)]"
                         >
                           #{tag}
                         </span>
@@ -834,16 +834,16 @@ export default function NearbyPeople() {
                   </div>
 
                   {/* Action Buttons: Wave & Like */}
-                  <div className="flex items-center gap-2 pt-1 border-t border-white/[0.08]">
+                  <div className="flex items-center gap-2 pt-1 border-t border-[var(--border-subtle)]">
                     <button
                       type="button"
                       onClick={handleModalWave}
-                      className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] py-2 text-xs font-semibold text-white/80 transition hover:bg-fuchsia-500/10 hover:text-fuchsia-300 active:scale-95"
+                      className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-[var(--border-subtle)] bg-[var(--badge-bg)] py-2 text-xs font-semibold text-[var(--text-primary)] transition hover:bg-fuchsia-500/10 hover:text-fuchsia-500 active:scale-95"
                     >
                       {modalWaved ? (
-                        <Check size={14} className="text-emerald-400" />
+                        <Check size={14} className="text-emerald-500" />
                       ) : (
-                        <Hand size={14} className="text-amber-300" />
+                        <Hand size={14} className="text-amber-400" />
                       )}
                       <span>{modalWaved ? "Waved! 👋" : "Send Wave 👋"}</span>
                     </button>
@@ -853,11 +853,11 @@ export default function NearbyPeople() {
                       onClick={() => setModalLiked(!modalLiked)}
                       className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border transition active:scale-95 ${
                         modalLiked
-                          ? "border-rose-500 bg-rose-500/20 text-rose-400"
-                          : "border-white/10 bg-white/[0.04] text-white/60 hover:text-rose-300"
+                          ? "border-rose-500 bg-rose-500/20 text-rose-500"
+                          : "border-[var(--border-subtle)] bg-[var(--badge-bg)] text-[var(--text-muted)] hover:text-rose-500"
                       }`}
                     >
-                      <Heart size={16} className={modalLiked ? "fill-rose-500" : ""} />
+                      <Heart size={16} className={modalLiked ? "fill-rose-500 text-rose-500" : ""} />
                     </button>
                   </div>
 
@@ -869,7 +869,7 @@ export default function NearbyPeople() {
                         value={messageText}
                         onChange={(e) => setMessageText(e.target.value)}
                         placeholder={`Message ${selectedProfile.name.split(" ")[0]}...`}
-                        className="w-full rounded-xl border border-white/15 bg-white/[0.05] py-2.5 pl-3 pr-10 text-xs text-white placeholder-white/40 outline-none focus:border-fuchsia-400"
+                        className="w-full rounded-xl border border-[var(--border-strong)] bg-[var(--bg-input)] py-2.5 pl-3 pr-10 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none focus:border-fuchsia-400"
                       />
                       <button
                         type="submit"
@@ -879,7 +879,7 @@ export default function NearbyPeople() {
                       </button>
                     </div>
                     {messageSent && (
-                      <p className="text-center text-[11px] font-semibold text-emerald-400">
+                      <p className="text-center text-[11px] font-semibold text-emerald-500">
                         ✓ Message sent to {selectedProfile.name}!
                       </p>
                     )}
@@ -896,7 +896,7 @@ export default function NearbyPeople() {
                       e.stopPropagation();
                       setSelectedProfile(null);
                     }}
-                    className="mt-2 w-full rounded-xl border border-white/15 bg-white/[0.08] py-3 text-center text-sm font-semibold text-white transition active:bg-white/20"
+                    className="mt-2 w-full rounded-xl border border-[var(--border-strong)] bg-[var(--badge-bg)] py-3 text-center text-sm font-semibold text-[var(--text-primary)] transition active:bg-[var(--border-subtle)]"
                   >
                     Close Profile
                   </button>

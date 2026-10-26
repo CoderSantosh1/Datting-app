@@ -126,17 +126,17 @@ export default function MessagesPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0B0B14] px-3 pt-3 pb-8">
+    <div className="min-h-screen bg-[var(--bg-app)] px-3 pt-3 pb-8 transition-colors duration-200">
       {/* Active 1-on-1 Chat Conversation Fullscreen View */}
       {activeChat ? (
         <div className="flex flex-col h-[calc(100vh-140px)]">
           {/* Chat Header */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+          <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3">
             <div className="flex items-center gap-2.5">
               <button
                 type="button"
                 onClick={() => setActiveChat(null)}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.05] text-white/70 hover:text-white"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--badge-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               >
                 <ArrowLeft size={16} />
               </button>
@@ -144,17 +144,17 @@ export default function MessagesPage() {
               <div className="relative h-9 w-9 overflow-hidden rounded-full ring-2 ring-fuchsia-500/50">
                 <Image src={activeChat.avatar} alt={activeChat.name} fill className="object-cover" />
                 {activeChat.isOnline && (
-                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border border-[#0B0B14] bg-emerald-400" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border border-[var(--bg-app)] bg-emerald-400" />
                 )}
               </div>
 
               <div>
-                <h2 className="text-xs font-bold text-white">{activeChat.name}</h2>
-                <p className="text-[10px] text-fuchsia-300">{activeChat.pronouns} • Active now</p>
+                <h2 className="text-xs font-bold text-[var(--text-primary)]">{activeChat.name}</h2>
+                <p className="text-[10px] text-fuchsia-400 font-medium">{activeChat.pronouns} • Active now</p>
               </div>
             </div>
 
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.05] text-fuchsia-400">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--badge-bg)] text-fuchsia-400">
               <Heart size={14} className="fill-fuchsia-400" />
             </span>
           </div>
@@ -171,31 +171,31 @@ export default function MessagesPage() {
                   <div
                     className={`rounded-2xl px-3.5 py-2 text-xs leading-relaxed ${
                       isMe
-                        ? "bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white rounded-br-xs"
-                        : "bg-white/[0.08] text-white/90 rounded-bl-xs"
+                        ? "bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white rounded-br-xs shadow-sm"
+                        : "border border-[var(--border-subtle)] bg-[var(--badge-bg)] text-[var(--text-primary)] rounded-bl-xs"
                     }`}
                   >
                     {msg.text}
                   </div>
-                  <span className="mt-0.5 px-1 text-[9px] text-white/40">{msg.time}</span>
+                  <span className="mt-0.5 px-1 text-[9px] text-[var(--text-muted)]">{msg.time}</span>
                 </div>
               );
             })}
           </div>
 
           {/* Message Input Box */}
-          <form onSubmit={handleSendMessage} className="pt-2 border-t border-white/[0.08] flex items-center gap-2">
+          <form onSubmit={handleSendMessage} className="pt-2 border-t border-[var(--border-subtle)] flex items-center gap-2">
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={`Message ${activeChat.name}...`}
-              className="flex-1 rounded-2xl border border-white/15 bg-white/[0.05] py-2.5 px-3.5 text-xs text-white placeholder-white/40 outline-none focus:border-fuchsia-400"
+              className="flex-1 rounded-2xl border border-[var(--border-strong)] bg-[var(--bg-input)] py-2.5 px-3.5 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none focus:border-fuchsia-400"
             />
             <button
               type="submit"
               disabled={!inputText.trim()}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white shadow-md disabled:opacity-40"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-fuchsia-500 to-violet-600 text-white shadow-md disabled:opacity-40 active:scale-95"
             >
               <Send size={14} />
             </button>
@@ -210,9 +210,9 @@ export default function MessagesPage() {
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400">
                 <MessageCircle size={15} />
               </span>
-              <h1 className="text-base font-black text-white">Messages & Chats</h1>
+              <h1 className="text-base font-black text-[var(--text-primary)]">Messages & Chats</h1>
             </div>
-            <span className="rounded-full bg-fuchsia-500/20 px-2 py-0.2 text-[10px] font-bold text-fuchsia-300">
+            <span className="rounded-full bg-fuchsia-500/20 px-2 py-0.2 text-[10px] font-bold text-fuchsia-400">
               {conversations.length} Active
             </span>
           </div>
@@ -230,10 +230,10 @@ export default function MessagesPage() {
                     <Image src={c.avatar} alt={c.name} fill className="object-cover" />
                   </div>
                   {c.isOnline && (
-                    <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#0B0B14] bg-emerald-400" />
+                    <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[var(--bg-app)] bg-emerald-400" />
                   )}
                 </div>
-                <span className="text-[10px] font-medium text-white/80 max-w-[55px] truncate">
+                <span className="text-[10px] font-medium text-[var(--text-secondary)] max-w-[55px] truncate">
                   {c.name.split(" ")[0]}
                 </span>
               </div>
@@ -242,13 +242,13 @@ export default function MessagesPage() {
 
           {/* Search Chats */}
           <div className="relative mt-2">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search conversations..."
-              className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-2 pl-8 pr-3 text-xs text-white placeholder-white/40 outline-none focus:border-fuchsia-400"
+              className="w-full rounded-xl border border-[var(--border-strong)] bg-[var(--bg-input)] py-2 pl-8 pr-3 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] outline-none focus:border-fuchsia-400"
             />
           </div>
 
@@ -258,29 +258,29 @@ export default function MessagesPage() {
               <div
                 key={c.id}
                 onClick={() => setActiveChat(c)}
-                className="flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-[#141224] p-3 transition hover:border-fuchsia-400/40 hover:bg-[#18152e] active:scale-[0.98]"
+                className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] p-3 shadow-[var(--shadow-card)] transition hover:border-fuchsia-400/40 hover:bg-[var(--bg-surface)] active:scale-[0.98]"
               >
                 <div className="flex items-center gap-3">
                   <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-fuchsia-500/40">
                     <Image src={c.avatar} alt={c.name} fill className="object-cover" />
                     {c.isOnline && (
-                      <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border border-[#141224] bg-emerald-400" />
+                      <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border border-[var(--bg-card)] bg-emerald-400" />
                     )}
                   </div>
 
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5">
-                      <h3 className="text-xs font-bold text-white truncate">{c.name}</h3>
-                      <span className="rounded bg-white/10 px-1 py-0.1 text-[9px] text-fuchsia-300">
+                      <h3 className="text-xs font-bold text-[var(--text-primary)] truncate">{c.name}</h3>
+                      <span className="rounded bg-[var(--badge-bg)] px-1 py-0.1 text-[9px] text-fuchsia-400 font-semibold">
                         {c.pronouns}
                       </span>
                     </div>
-                    <p className="mt-0.5 truncate text-[11px] text-white/60">{c.lastMessage}</p>
+                    <p className="mt-0.5 truncate text-[11px] text-[var(--text-muted)]">{c.lastMessage}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-end gap-1 shrink-0">
-                  <span className="text-[9px] text-white/40">{c.time}</span>
+                  <span className="text-[9px] text-[var(--text-muted)]">{c.time}</span>
                   {c.unread > 0 && (
                     <span className="flex h-4 w-4 items-center justify-center rounded-full bg-fuchsia-500 text-[9px] font-bold text-white">
                       {c.unread}

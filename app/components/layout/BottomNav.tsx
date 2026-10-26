@@ -24,7 +24,7 @@ export default function BottomNav() {
   return (
     <nav
       aria-label="Mobile app navigation"
-      className="fixed inset-x-0 bottom-0 z-[100] mx-auto w-full max-w-md border-t border-white/10 bg-[#0B0B14]/95 text-white shadow-[0_-8px_30px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+      className="fixed inset-x-0 bottom-0 z-[100] mx-auto w-full max-w-md border-t border-[var(--border-subtle)] bg-[var(--nav-bg)] text-[var(--text-primary)] shadow-[0_-4px_24px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-colors duration-200"
       style={{
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
@@ -60,21 +60,21 @@ export default function BottomNav() {
               <Icon
                 size={22}
                 strokeWidth={active ? 2.5 : 1.8}
-                className={active ? "text-fuchsia-400" : "text-white/60"}
+                className={active ? "text-fuchsia-500" : "text-[var(--text-muted)]"}
               />
 
               <span
-                className={`text-[10px] leading-tight ${
+                className={`text-[10px] leading-tight transition-colors ${
                   active
-                    ? "font-bold text-fuchsia-300"
-                    : "font-medium text-white/65"
+                    ? "font-bold text-fuchsia-500"
+                    : "font-medium text-[var(--text-muted)]"
                 }`}
               >
                 {label}
               </span>
 
               {active && (
-                <span className="absolute top-0 h-[2.5px] w-6 rounded-full bg-fuchsia-400 shadow-[0_0_8px_rgba(217,70,239,0.8)]" />
+                <span className="absolute top-0 h-[2.5px] w-6 rounded-full bg-fuchsia-500 shadow-[0_0_8px_rgba(217,70,239,0.8)]" />
               )}
             </Link>
           );
